@@ -1,0 +1,46 @@
+
+
+<div class="thumbnailz">
+   {% for image in product.images %}
+     <img class="cokor-{{ image.alt | capitalize}}" src={{ image | img_url: '150x' }} alt="{{ image.alt }}" img-alt="{{ image.alt | capitalize }}">
+    {% endfor %}
+ </div>
+ <div class="main-produktz">
+    {% for image in product.images %}
+      <img src={{ image | img_url: '500x' }} alt="{{ image.alt }}" >
+    {% endfor %}
+ </div>
+
+
+<script>
+ 
+   
+$('.main-produktz').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  fade: true,
+  asNavFor: '.thumbnailz'
+});
+$('.thumbnailz').slick({
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  asNavFor: '.main-produktz',
+  vertical: true,
+  verticalSwiping: true,
+  arrows: false,
+  dots: false,
+  centerMode: false,
+  infinite: false,
+  focusOnSelect: true
+});
+ 
+$('.swat').click(function(){
+    var firts = $(this).attr('data-original-title');
+     $('.thumbnailz').slick('slickUnfilter');
+     if(firts == firts) {
+        $('.thumbnailz').slick('slickFilter','.cokor-'+firts);  
+    }
+    $('.thumbnailz').children().children().children('img').click();
+});
+</script>
