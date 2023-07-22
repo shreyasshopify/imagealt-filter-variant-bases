@@ -44,3 +44,23 @@ $('.swat').click(function(){
     $('.thumbnailz').children().children().children('img').click();
 });
 </script>
+
+
+<script>
+ if($(window).width() < 750){
+    $(document).ready(function(){
+      $('.featured_media_ppl').slick({
+        infinite: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows:true
+      });
+      $(".coloe-ids").click(function(){ 
+        var slideno = $(this).data('sliderp');
+        // alert(slideno)  
+        //data-sliderp="{{ variant.featured_media.position }}"
+        $('.featured_media_ppl').slick('slickGoTo', slideno - 1);
+      });  
+   });
+ }
+</script> 
